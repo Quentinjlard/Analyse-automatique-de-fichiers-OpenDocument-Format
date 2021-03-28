@@ -51,7 +51,7 @@ public class metaodt
 		{
 			System.out.println("XPath generation d'expression...");
 			xpath = XPathFactory.newInstance().newXPath();
-			String exp = "/document-meta/meta/*";
+			String exp = "/document-meta/office/*";
 			var res = xpath.compile(exp).evaluate(document, javax.xml.xpath.XPathConstants.NODESET);
 			System.out.println("\nResultats :");
 			System.out.println("------------------------");
@@ -63,7 +63,9 @@ public class metaodt
 				for(int i=0; i<nodes.getLength(); i++)
 				{
 					System.out.println(nodes.item(i).getNodeName() + DELIMITER + nodes.item(i).getTextContent());
-					//System.out.println( getName()+ DELIMITER +  getValue());
+					String str = (String) nodes.item(i).getAttributes();
+					
+					System.out.println(str);
 					try
 					{
 						file = new FileWriter("Meta.csv");
