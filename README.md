@@ -2,6 +2,9 @@
 
 ## Présentation Général
 
+[![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
+
 ### Le content.xml
 
 Le content.xml est le fichier racine, ce fichier contient l'inforamtion en elle-même. 
@@ -72,3 +75,9 @@ A l'intérieur, nous trouvons une liste de champs prédéfinis assez standard:
 Il permet de géré interfonctionnement informatiques entre divers types de ressources informatique.
 
 ## Le fichier CONTENT en détail
+
+### Quels est le rôle du fichier meta.xml?
+
+### Que trouves-t-on à l'intérieur?
+
+### Que fait-il?
