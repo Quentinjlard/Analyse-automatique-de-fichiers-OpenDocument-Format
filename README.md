@@ -81,34 +81,42 @@ Il permet de géré interfonctionnement informatiques entre divers types de ress
 Le fichier varie celon les différents format d'enregistrement mais il utilise toujours les mêmes balises.
 La racine sera toujours nommée comme cela ```<office:document-content espace:de:nom>```.
 
-### Que peut-on trouvé dans l'espace nom?
-
-Dans l'espaces nom, nous pouvons trouvé les informations suivantes:
+### Les principale balise ;
 
 <ol>
-  <li>Texte
+  <li>créé un titre
     <ul>
-      <li>```urn:oasis:names:tc:opendocument:xmlns:text:1.0```</li>
+      <li>``` < text:h > ```</li>
      </ul>
    </li>
-   <li>Présentation
+   <li>démarre un paragraphe
     <ul>
-      <li>```urn:oasis:names:tc:opendocument:xmlns:presentation:1.0```</li>
+      <li>```< text:p >```</li>
      </ul>
    </li>
-   <li>Feuille de style 
+   <li>défini un espace
     <ul>
-      <li>```urn:oasis:names:tc:opendocument:xmlns:style:1.0```</li>
+      <li>```< text:s > ```</li>
      </ul>
    </li>
-   <li>Fichier MathML
+   <li>place une tabulation
     <ul>
-      <li>[texte du lien](http://www.w3.org/1998/Math/MathML "Espace de noms MathML")</li>
+      <li>```< text:tab >```</li>
      </ul>
    </li>
-   <li>Texte OOo :
+   <li>fait un retour à la ligne
     <ul>
-      <li>[texte du lien](http://openoffice.org/2004/writer "Apache OpenOffice 4.1.9")</li>
+      <li>```< text:line-break >```</li>
+     </ul>
+   </li>
+   <li>cible une ligne de texte particulière
+    <ul>
+      <li>```< text:span >```</li>
+     </ul>
+   </li>
+   <li>marque le début d'une section du document, qui peut regrouper plusieurs titres et paragraphes.
+    <ul>
+      <li>```< text:section >```</li>
      </ul>
    </li>
 </ol>
@@ -118,17 +126,17 @@ Dans l'espaces nom, nous pouvons trouvé les informations suivantes:
 <ol>
   <li>Macros
     <ul>
-      <li>```<office:scripts>```</li>
+      <li>```< office:scripts >```</li>
      </ul>
    </li>
    <li>Polices utilisées
     <ul>
-      <li>```<office:font-face-decls> ```</li>
+      <li>```< office:font-face-decls > ```</li>
      </ul>
    </li>
    <li>Styles internes
     <ul>
-      <li>```<office:styles>```</li>
+      <li>```< office:styles >```</li>
      </ul>
    </li>
 </ol>
