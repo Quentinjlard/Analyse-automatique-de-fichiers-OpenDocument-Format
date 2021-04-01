@@ -1,9 +1,9 @@
-#Présentation des fichiers ODT
-
-## Présentation Général
+# Présentation des fichiers ODT
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
+
+## Présentation Général
 
 ### Le content.xml
 
@@ -76,8 +76,65 @@ Il permet de géré interfonctionnement informatiques entre divers types de ress
 
 ## Le fichier CONTENT en détail
 
-### Quels est le rôle du fichier meta.xml?
+### La racine
 
-### Que trouves-t-on à l'intérieur?
+Le fichier varie celon les différents format d'enregistrement mais il utilise toujours les mêmes balises.
+La racine sera toujours nommée comme cela ```<office:document-content espace:de:nom>```.
 
-### Que fait-il?
+### Que peut-on trouvé dans l'espace nom?
+
+Dans l'espaces nom, nous pouvons trouvé les informations suivantes:
+
+<ol>
+  <li>Texte
+    <ul>
+      <li>```urn:oasis:names:tc:opendocument:xmlns:text:1.0```</li>
+     </ul>
+   </li>
+   <li>Présentation
+    <ul>
+      <li>```urn:oasis:names:tc:opendocument:xmlns:presentation:1.0```</li>
+     </ul>
+   </li>
+   <li>Feuille de style 
+    <ul>
+      <li>```urn:oasis:names:tc:opendocument:xmlns:style:1.0```</li>
+     </ul>
+   </li>
+   <li>Fichier MathML
+    <ul>
+      <li>[texte du lien](http://www.w3.org/1998/Math/MathML "Espace de noms MathML")</li>
+     </ul>
+   </li>
+   <li>Texte OOo :
+    <ul>
+      <li>[texte du lien](http://openoffice.org/2004/writer "Apache OpenOffice 4.1.9")</li>
+     </ul>
+   </li>
+</ol>
+
+### Que peut-on trouvé d'autre?
+
+<ol>
+  <li>Macros
+    <ul>
+      <li>```<office:scripts>```</li>
+     </ul>
+   </li>
+   <li>Polices utilisées
+    <ul>
+      <li>```<office:font-face-decls> ```</li>
+     </ul>
+   </li>
+   <li>Styles internes
+    <ul>
+      <li>```<office:styles>```</li>
+     </ul>
+   </li>
+</ol>
+
+### Conclusion
+
+Les élents cité dans la partie précendente sont toujours en dernier.
+L'élement ```<office:body>``` est défini par son premier sous-élement , qu'on retrouver dans la 2e partie de cette sections.
+Pour un document texte, le sous-élement sous la balise ```<office:body>``` sera la la balise ```<office:text>```.
