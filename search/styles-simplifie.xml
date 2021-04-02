@@ -1,0 +1,47 @@
+<office:document-styles>
+	<office:font-face-decls>
+		<style:font-face/>
+	</office:font-face-decls>
+	<office:styles>
+		<style:default-style>
+			<style:graphic-properties/>
+			<style:paragraph-properties>
+				<style:tab-stops/>
+			</style:paragraph-properties>
+			<style:text-properties/>
+		</style:default-style>
+		<style:default-style style:family="table">
+			<style:table-properties table:border-model="collapsing"/>
+		</style:default-style>
+		<style:default-style style:family="table-row">
+			<style:table-row-properties fo:keep-together="auto"/>
+		</style:default-style>
+		<style:style/>
+		<style:style>
+			<style:paragraph-properties/>
+			<style:text-properties/>
+		</style:style>
+		<text:outline-style>
+			<text:outline-level-style>
+				<style:list-level-properties>
+					<style:list-level-label-alignment/>
+				</style:list-level-properties>
+			</text:outline-level-style>
+		</text:outline-style>
+		<text:notes-configuration/>
+		<text:notes-configuration/>
+		<text:linenumbering-configuration/>
+	</office:styles>
+	<office:automatic-styles>
+		<style:page-layout>
+			<style:page-layout-properties>
+				<style:footnote-sep/>
+			</style:page-layout-properties>
+			<style:header-style/>
+			<style:footer-style/>
+		</style:page-layout>
+	</office:automatic-styles>
+	<office:master-styles>
+		<style:master-page style:name="Standard" style:page-layout-name="Mpm1"/>
+	</office:master-styles>
+</office:document-styles>

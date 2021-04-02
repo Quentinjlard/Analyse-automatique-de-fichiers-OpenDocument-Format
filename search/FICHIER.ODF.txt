@@ -1,0 +1,31 @@
+FICHIER.ODF
+	|
+	+-- META-INF/
+	|		|
+	|		+-- manifest.xml
+	|
+	+-- Thumbnails/
+	|		|
+	|		+-- thumbnails.png
+	|
+	+-- Configuration2/
+	|		|
+	|		+-- [...]
+	|
+	+-- Pictures/
+	|
+	+-- Basics/
+	|
+	+-- meta.xml
+	|
+	+-- content.xml
+	|
+	+-- settings.xml
+	|
+	+-- styles.xml
+	|
+	+-- mimetype
+	|
+	+-- manifest.rdf
+	|
+	+-- layout-cache
