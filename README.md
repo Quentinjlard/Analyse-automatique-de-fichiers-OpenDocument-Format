@@ -40,8 +40,9 @@ Il existe aussi un manifest dans l'archive JAR en JAVA.
 Le dossier picture contient la globalité des images présentes dans les docments présent dans l'archive. 
 Elles seront référencés directement au format image souvent en PNJ.
 
-## Arborescence des fichier.ODF
+## Arborescence des fichier.ODT
 
+```
 FICHIER.ODF
 	|
 	+ - META-INF /
@@ -73,6 +74,7 @@ FICHIER.ODF
 	+ - manifest.rdf
 	|
 	+ - cache-mise en page
+```
 
 ## Le fichier META en détail
 
