@@ -40,6 +40,40 @@ Il existe aussi un manifest dans l'archive JAR en JAVA.
 Le dossier picture contient la globalité des images présentes dans les docments présent dans l'archive. 
 Elles seront référencés directement au format image souvent en PNJ.
 
+## Arborescence des fichier.ODF
+
+FICHIER.ODF
+	|
+	+ - META-INF /
+	|   |
+	|   + - manifest.xml
+	|
+	+ - Vignettes /
+	|   |
+	|   + - thumbnails.png
+	|
+	+ - Configuration2 /
+	|   |
+	|   + - [...]
+	|
+	+ - Photos /
+	|
+	+ - Notions de base /
+	|
+	+ - meta.xml
+	|
+	+ - content.xml
+	|
+	+ - settings.xml
+	|
+	+ - styles.xml
+	|
+	+ - type MIME
+	|
+	+ - manifest.rdf
+	|
+	+ - cache-mise en page
+
 ## Le fichier META en détail
 
 ### Quels est le rôle du fichier meta.xml?
