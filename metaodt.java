@@ -21,7 +21,7 @@ public class metaodt
 		ZipFile zip;
 		String DELIMITER = ",";
     	String SEPARATOR = "\n";
-		String HEADER = "Valeur";
+		String HEADER = "Balise , Contenu";
 
 		if(args.length > 0)
 			odfFilePath = args[0];
@@ -51,7 +51,7 @@ public class metaodt
 		{
 			System.out.println("XPath generation d'expression...");
 			xpath = XPathFactory.newInstance().newXPath();
-			String exp = "/document-meta/office/*";
+			String exp = "/document-meta/meta/*";
 			var res = xpath.compile(exp).evaluate(document, javax.xml.xpath.XPathConstants.NODESET);
 			System.out.println("\nResultats :");
 			System.out.println("------------------------");
@@ -62,10 +62,9 @@ public class metaodt
 				
 				for(int i=0; i<nodes.getLength(); i++)
 				{
-					System.out.println(nodes.item(i).getNodeName() + DELIMITER + nodes.item(i).getTextContent());
-					String str = (String) nodes.item(i).getAttributes();
-					
-					System.out.println(str);
+					System.out.println(nodes.item(i).getNodeName() + DELIMITER + nodes.item(i).getTextContent() + DELIMITER);
+					System.out.println(((Element)nodes.item(i)).getLocalName()+DELIMITER);
+					System.out.println(nodes.item(i).getNodeValue()+DELIMITER);
 					try
 					{
 						file = new FileWriter("Meta.csv");
