@@ -86,7 +86,9 @@ La racine sera toujours nommée comme cela ```<office:document-content espace:de
 <ol>
   <li>créé un titre
     <ul>
-      <li>``` < text:h > ```</li>
+      <li>
+        ``` < text:h > ```
+      </li>
      </ul>
    </li>
    <li>démarre un paragraphe
