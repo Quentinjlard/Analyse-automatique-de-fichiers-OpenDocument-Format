@@ -1,6 +1,7 @@
 public enum ListeXML{
     META,
     CONTENT,
-    STYLE,
-    SETTINGS;
+    STYLES,
+    SETTINGS,
+    MANIFEST;
 }
