@@ -6,8 +6,7 @@ import org.w3c.dom.Document;
 public class TestFichierBase {
     public static void main(String[] args) {
         FichierBase Test = new FichierBase("test.odp");
-        ListeXML style = ListeXML.STYLES;
-        Document style_Test = Test.parse(ListeXML.STYLES);
+        Document style_Test = Test.parse(ListeXML.MANIFEST);
         System.out.println(style_Test);
     }
 }

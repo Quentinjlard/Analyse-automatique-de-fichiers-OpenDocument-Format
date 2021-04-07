@@ -7,6 +7,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -51,7 +52,12 @@ public class FichierBase {
     public Document parse(ListeXML Type){
         FileHeader toParse = null;
         try {
-            toParse = fichier.getFileHeader(Type+".xml");
+            if(Type == ListeXML.MANIFEST){
+                toParse = fichier.getFileHeader("META-INF"+ File.separator+Type+".xml");
+            }
+            else {
+                toParse = fichier.getFileHeader(Type + ".xml");
+            }
         } catch (ZipException e) {
             System.out.println("Erreur dans la décompression du fichier");
             e.printStackTrace();
