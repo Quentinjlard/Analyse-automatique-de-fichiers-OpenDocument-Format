@@ -1,10 +1,14 @@
-// import cls.odf.odt.MenuODT;
-// import cls.odf.ods.MenuODS;
-// import cls.odf.odp.MenuODP;
+import cls.odf.odt.MenuODT;
+import cls.odf.ods.MenuODS;
+import cls.odf.odp.MenuODP;
 import cls.exception.*;
 import cls.ext.*;
 
 import java.io.File;
+import java.util.Vector;
+
+import cls.net.lingala.zip4j.ZipFile;
+// import cls.net.lingala.zip4j.exception.ZipException;
 
 /**
  * Classe Main de l'application Odfanalyseur
@@ -19,6 +23,8 @@ public class odfanalyser
     private static boolean toDir = false;
     private static boolean isExtractable = false;
     private static boolean hasVerbose = false;
+    private static ZipFile zip;
+    private static Vector<OdfFiles> vector = new Vector<OdfFiles>();
 
     /**
      * Analyse l'entr&eacute;e en ligne de commande de l'utilisateur, puis le redirige vers le menu adapt&eacute; au format de fichier
@@ -130,17 +136,20 @@ public class odfanalyser
                     if(path.endsWith(".odt"))
                     {
                         fileExtension = Extension.ODT;
-                        // du code...
+                        zip = new ZipFile(path);
+                        vector.add(new OdfFiles(zip));
                     }
                     else if(path.endsWith(".odp"))
                     {
                         fileExtension = Extension.ODP;
-                        // du code...
+                        zip = new ZipFile(path);
+                        vector.add(new OdfFiles(zip));
                     }
                     else if(path.endsWith(".ods"))
                     {
                         fileExtension = Extension.ODS;
-                        // du code...
+                        zip = new ZipFile(path);
+                        vector.add(new OdfFiles(zip));
                     }
                     else
                     {
@@ -162,11 +171,6 @@ public class odfanalyser
             System.err.println((new OdfException(ExceptionTypes.INVALID_PATH)).getMessage());
             System.exit(0);
         }
-        catch(java.nio.file.InvalidPathException e)
-        {
-            System.err.println((new OdfException(ExceptionTypes.INVALID_PATH)).getMessage());
-            System.exit(0);
-        }
         catch(OdfException e)
         {
             System.err.println(e.getMessage());
@@ -182,7 +186,30 @@ public class odfanalyser
      */
     private static void goToMenu()
     {
-        verify();
+        if(hasVerbose)
+            verify();
+        if(!isExtractable)
+        {
+            switch(fileExtension)
+            {
+                case ODT :
+                    new MenuODT(vector);
+                    break;
+                case ODP :
+                    new MenuODP(vector);
+                    break;
+                case ODS : 
+                    new MenuODS(vector);
+                    break;
+                default : 
+                    // du code...
+                    break;
+            }
+        }
+        else
+        {
+            // du code...
+        }
     }
 
     /**

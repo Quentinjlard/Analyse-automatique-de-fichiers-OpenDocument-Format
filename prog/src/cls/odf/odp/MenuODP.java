@@ -1,9 +1,15 @@
 package cls.odf.odp;
 
+import cls.ext.OdfFiles;
+import java.util.Vector;
+
 public class MenuODP
 {
-    public MenuODP()
+    public MenuODP(Vector<OdfFiles> vector)
     {
-        System.out.println("Ceci est le menu odp");
+        for (OdfFiles odf : vector)
+        {
+            System.out.println(odf.get("content.xml").getNodeName());
+        }
     }
 }

@@ -9,6 +9,7 @@ public enum ExceptionTypes
     FILE_DOES_NOT_EXIST(""),
     NEEDED_PATH(""),
     EXTENSION(""),
+    ODFFILE_FAILED(""),
     UNDEFINED_ERROR("");
 
     // attributs
