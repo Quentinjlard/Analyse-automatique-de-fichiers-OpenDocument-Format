@@ -3,9 +3,13 @@ package cls.exception;
 public enum ExceptionTypes
 {
     // enumération
-    TYPE_ARGUMENT("test : type_argument"),
+    TYPE_ARGUMENT(""),
     INVALID_PATH(""),
-    EXTENSION("");
+    INVALID_OPTION(""),
+    FILE_DOES_NOT_EXIST(""),
+    NEEDED_PATH(""),
+    EXTENSION(""),
+    UNDEFINED_ERROR("");
 
     // attributs
     private String description;

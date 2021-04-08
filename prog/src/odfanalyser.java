@@ -1,8 +1,10 @@
-import cls.odf.odt.MenuODT;
-import cls.odf.ods.MenuODS;
-import cls.odf.odp.MenuODP;
+// import cls.odf.odt.MenuODT;
+// import cls.odf.ods.MenuODS;
+// import cls.odf.odp.MenuODP;
 import cls.exception.*;
 import cls.ext.*;
+
+import java.io.File;
 
 /**
  * Classe Main de l'application Odfanalyseur
@@ -12,7 +14,8 @@ import cls.ext.*;
 public class odfanalyser
 {
     private static String path;
-    private static Extension fileExtension;
+    private static String extractPath;
+    private static Extension fileExtension = Extension.UNDEFINED;
     private static boolean toDir = false;
     private static boolean isExtractable = false;
     private static boolean hasVerbose = false;
@@ -45,16 +48,22 @@ public class odfanalyser
                 switch(args[0].charAt(1))
                 {
                     case 't' :
-                        // Test => à modifier
-                        new MenuODT();
+                        fileExtension = Extension.ODT;
+                        if (args[1].charAt(0) == '-')
+                            throw new OdfException(ExceptionTypes.NEEDED_PATH);
+                        path = args[1];
                         break;
                     case 'p' : 
-                        // Test => à modifier
-                        new MenuODP();
+                        fileExtension = Extension.ODP;
+                        if (args[1].charAt(0) == '-')
+                            throw new OdfException(ExceptionTypes.NEEDED_PATH);
+                        path = args[1];
                         break;
                     case 's' : 
-                        // Test => à modifier
-                        new MenuODS();
+                        fileExtension = Extension.ODS;
+                        if (args[1].charAt(0) == '-')
+                            throw new OdfException(ExceptionTypes.NEEDED_PATH);
+                        path = args[1];
                         break;
                     default : throw new OdfException(ExceptionTypes.TYPE_ARGUMENT);
                 }
@@ -76,6 +85,11 @@ public class odfanalyser
                 System.err.println(e.getMessage());
                 System.exit(0);
             }
+            catch(ArrayIndexOutOfBoundsException e)
+            {
+                System.err.println((new OdfException(ExceptionTypes.NEEDED_PATH)).getMessage());
+                System.exit(0);
+            }
         }
         // si aucun des cas -t -s ou -p, alors continuer l'analyse...
         if(!toDir)
@@ -89,29 +103,64 @@ public class odfanalyser
                     opt[j] = args[i];
                     j++;
                 }
-                options(opt);
+                try
+                {
+                    options(opt);
+                }
+                catch(OdfException e)
+                {
+                    System.err.println(e.getMessage());
+                    System.exit(0);
+                }
             }
         }
         // ...sinon passer directement à l'execution
         // appel aux menus
         try
         {
-            if(java.nio.file.Paths.get(path).endsWith(".odt"))
+            File f = new File(path);
+            if(f.exists())
             {
-
-            }
-            else if(java.nio.file.Paths.get(path).endsWith(".odp"))
-            {
-
-            }
-            else if(java.nio.file.Paths.get(path).endsWith(".ods"))
-            {
-
+                if(fileExtension != Extension.UNDEFINED && f.isDirectory())
+                {
+                    // du code...
+                }
+                else if(fileExtension == Extension.UNDEFINED && f.isFile())
+                {
+                    if(path.endsWith(".odt"))
+                    {
+                        fileExtension = Extension.ODT;
+                        // du code...
+                    }
+                    else if(path.endsWith(".odp"))
+                    {
+                        fileExtension = Extension.ODP;
+                        // du code...
+                    }
+                    else if(path.endsWith(".ods"))
+                    {
+                        fileExtension = Extension.ODS;
+                        // du code...
+                    }
+                    else
+                    {
+                        throw new OdfException(ExceptionTypes.EXTENSION);
+                    }
+                }
+                else
+                {
+                    throw new OdfException(ExceptionTypes.UNDEFINED_ERROR);
+                }
             }
             else
             {
-                throw new OdfException(ExceptionTypes.EXTENSION);
+                throw new OdfException(ExceptionTypes.FILE_DOES_NOT_EXIST);
             }
+        }
+        catch(NullPointerException e)
+        {
+            System.err.println((new OdfException(ExceptionTypes.INVALID_PATH)).getMessage());
+            System.exit(0);
         }
         catch(java.nio.file.InvalidPathException e)
         {
@@ -123,15 +172,59 @@ public class odfanalyser
             System.err.println(e.getMessage());
             System.exit(0);
         }
+
+        // si toutes les vérifications sont faites, valider l'execution
+        goToMenu();
+    }
+
+    /**
+     * Fait l'appel au menu
+     */
+    private static void goToMenu()
+    {
+        verify();
     }
 
     /**
      * Gestion des des options verbose et extraction
      * @param opt liste des options pass&eacute;s en param&egrave;tre
      */
-    private static void options(String[] opt)
+    private static void options(String[] opt) throws OdfException
     {
-
+        for(int j=0; j<opt.length; j++)
+        {
+            if(opt[j].charAt(0) != '-')
+                throw new OdfException(ExceptionTypes.INVALID_OPTION);
+            for(int i=1; i<opt[j].length(); i++)
+            {
+                switch(opt[j].charAt(i))
+                {
+                    case 'x':
+                        isExtractable = true;
+                        break;
+                    case 'v':
+                        hasVerbose = true;
+                        break;
+                    default : throw new OdfException(ExceptionTypes.INVALID_OPTION);
+                }
+            }
+            if(isExtractable && extractPath == null)
+            {
+                j++;
+                try
+                {
+                    extractPath = opt[j];
+                    if(!(new File(extractPath)).isDirectory())
+                        extractPath = null;
+                    if(opt[j].equals("-v"))
+                        hasVerbose = true;
+                }
+                catch(ArrayIndexOutOfBoundsException e)
+                {
+                    extractPath = null;
+                }
+            }
+        }
     }
 
     /**
@@ -160,5 +253,19 @@ public class odfanalyser
         doc += "\n\n-------------------------";
         doc += "\n\nAuteurs : Corentin Machet, Corentin Antoine, Corentin Niarquin\n          Quentin Juillard, Victor Lanotte, Florian Colson";
         System.out.println(doc);
+    }
+
+    /**
+     * Affiche la description complète des attribut de la classe pour vérifier son bon fonctionnement
+     */
+    private static void verify()
+    {
+        String str = "Description";
+        str += "\n\tPath : " + path;
+        str += "\n\tExtract Path : " + extractPath;
+        str += "\n\tFile Extension : " + fileExtension;
+        str += "\n\tExtractable : " + isExtractable;
+        str += "\n\tVerbose : " + hasVerbose;
+        System.out.println(str);
     }
 }
