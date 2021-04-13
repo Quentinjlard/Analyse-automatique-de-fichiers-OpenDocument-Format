@@ -7,15 +7,14 @@ import java.util.Scanner;
 
 public class MenuODT
 {	
+	private boolean arret = false;
+
 	public MenuODT(Vector<OdfFiles> vector)
 	{
 
-		String odfFilePath;
-
 		Scanner clavier = new Scanner(System.in);
-		int i = 0;
         int sousmenu = 0;
-        boolean arret = false;
+        
 		System.out.println("--------------------------------------------------------");
 		System.out.println("-------------------ANALYSEUR DE ODT---------------------");
 		System.out.println("--------------------------------------------------------");
@@ -42,7 +41,6 @@ public class MenuODT
 				{
 					case 1 :
 					{
-						i++;
 						for(OdfFiles odf : vector)
 						{
 							System.out.println("Demarrage de l'analyse du META"); 
@@ -53,13 +51,11 @@ public class MenuODT
 					}	
 					case 2 :
 					{
-						i++;
 						System.out.println("Demarrage de l'analyse du STYLES"); 
 						break;
 					}
 					case 3 :
 					{
-						i++;
 						System.out.println("Demarrage de l'analyse du Content");
 						for(OdfFiles odf : vector)
 						{
@@ -98,7 +94,6 @@ public class MenuODT
 				{
 					case 1 :
 					{
-						i++;
 						for(OdfFiles odf : vector)
 						{
 							System.out.println("Demarrage de l'analyse du META"); 
@@ -109,7 +104,6 @@ public class MenuODT
 					}	
 					case 2 :
 					{
-						i++;
 						for(OdfFiles odf : vector)
 						{
 							System.out.println("Demarrage de l'analyse du META"); 
@@ -120,7 +114,6 @@ public class MenuODT
 					}
 					case 3 :
 					{
-						i++;
 						for(OdfFiles odf : vector)
 						{
 							System.out.println("Demarrage de l'analyse du META"); 
