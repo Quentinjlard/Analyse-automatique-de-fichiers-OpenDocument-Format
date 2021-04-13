@@ -11,9 +11,11 @@ public class metaodt
 	public metaodt(Document document)
 	{
 		XPath xpath;
-		String DELIMITER = ",";
+		
+		String DELIMITER = "/";
     	String SEPARATOR = "\n";
-		String HEADER = "Balise , Contenu";
+		String HEADER = "Balise/ Contenu";
+
 		try
 		{
 			System.out.println("XPath generation d'expression...");
