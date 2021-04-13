@@ -137,7 +137,7 @@ public class odfanalyser
                         if(arr[i].endsWith(fileExtension.toString()) && (new File(fullPath)).isFile())
                         {
                             zip = new ZipFile(fullPath);
-                            vector.add(new OdfFiles(zip));
+                            vector.add(new OdfFiles(zip, fullPath));
                         }
                     }
                 }
@@ -147,19 +147,19 @@ public class odfanalyser
                     {
                         fileExtension = Extension.ODT;
                         zip = new ZipFile(path);
-                        vector.add(new OdfFiles(zip));
+                        vector.add(new OdfFiles(zip, path));
                     }
                     else if(path.endsWith(".odp"))
                     {
                         fileExtension = Extension.ODP;
                         zip = new ZipFile(path);
-                        vector.add(new OdfFiles(zip));
+                        vector.add(new OdfFiles(zip, path));
                     }
                     else if(path.endsWith(".ods"))
                     {
                         fileExtension = Extension.ODS;
                         zip = new ZipFile(path);
-                        vector.add(new OdfFiles(zip));
+                        vector.add(new OdfFiles(zip, path));
                     }
                     else
                     {

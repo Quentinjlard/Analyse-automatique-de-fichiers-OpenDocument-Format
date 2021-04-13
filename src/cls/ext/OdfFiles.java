@@ -9,12 +9,14 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 
+import java.io.File;
+
 public class OdfFiles
 {
     private HashMap<String, Document> map;
-    private String name;
+    private String zipName;
 
-    public OdfFiles(ZipFile zip) throws OdfException
+    public OdfFiles(ZipFile zip, String path) throws OdfException
     {
         map = new HashMap<String, Document>();
         List<FileHeader> headers;
@@ -33,7 +35,7 @@ public class OdfFiles
                         Document doc = builder.parse(is);
                         is.close();
                         map.put(name, doc);
-                        this.name = name;
+                        zipName = (new File(path)).getName();
                     }
                 }
                 catch(Exception ex)
@@ -56,6 +58,6 @@ public class OdfFiles
 
     public String name()
     {
-        return this.name;
+        return zipName;
     }
 }
