@@ -130,6 +130,16 @@ public class odfanalyser
                 if(fileExtension != Extension.UNDEFINED && f.isDirectory())
                 {
                     // récupérer ts les fichiers dans des OdfFiles
+                    String[] arr = f.list();
+                    for(int i=0; i<arr.length; i++)
+                    {
+                        String fullPath = path + File.separator + arr[i];
+                        if(arr[i].endsWith(fileExtension.toString()) && (new File(fullPath)).isFile())
+                        {
+                            zip = new ZipFile(fullPath);
+                            vector.add(new OdfFiles(zip));
+                        }
+                    }
                 }
                 else if(fileExtension == Extension.UNDEFINED && f.isFile())
                 {
@@ -190,6 +200,8 @@ public class odfanalyser
             verify();
         if(!isExtractable)
         {
+            System.out.println("\nNombre d'elements en cours d'analyse : " + vector.size());
+            System.out.println();
             switch(fileExtension)
             {
                 case ODT :
@@ -202,13 +214,14 @@ public class odfanalyser
                     new MenuODS(vector);
                     break;
                 default : 
-                    // du code...
-                    break;
+                    new OdfException(ExceptionTypes.UNDEFINED_ERROR);
+                    System.exit(0);
             }
         }
         else
         {
             // utiliser les variables path et extractPath pour l'extraction 
+            System.err.println("L'extraction de fichiers n'est actuellement pas encore disponible...");
         }
     }
 
@@ -278,7 +291,7 @@ public class odfanalyser
         doc += "\n\t-v [DIR]\t\tVerbose.";
         doc += "\n\njava -jar odfanalyser.jar\tAffiche cette documentation.";
         doc += "\n\n-------------------------";
-        doc += "\n\nAuteurs : Corentin Machet, Corentin Antoine, Corentin Niarquin\n          Quentin Juillard, Victor Lanotte, Florian Colson";
+        doc += "\n\nAuteurs : Corentin Machet, Corentin Antoine, Corentin Niarquin\n          Quentin Juilliard, Victor Lanotte, Florian Colson";
         System.out.println(doc);
     }
 
