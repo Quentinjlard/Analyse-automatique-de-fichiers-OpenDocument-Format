@@ -99,16 +99,34 @@ public class MenuODT
 					case 1 :
 					{
 						i++;
+						for(OdfFiles odf : vector)
+						{
+							System.out.println("Demarrage de l'analyse du META"); 
+							new auteur(odf.get("meta.xml"));
+							System.out.println();
+						}
 						break;
 					}	
 					case 2 :
 					{
 						i++;
+						for(OdfFiles odf : vector)
+						{
+							System.out.println("Demarrage de l'analyse du META"); 
+							new dateCreation(odf.get("meta.xml"));
+							System.out.println();
+						}
 						break;
 					}
 					case 3 :
 					{
 						i++;
+						for(OdfFiles odf : vector)
+						{
+							System.out.println("Demarrage de l'analyse du META"); 
+							new derniereModification(odf.get("meta.xml"));
+							System.out.println();
+						}
 						break;
 					}
 					case 4 :
