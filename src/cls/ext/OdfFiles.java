@@ -12,6 +12,7 @@ import org.w3c.dom.Document;
 public class OdfFiles
 {
     private HashMap<String, Document> map;
+    private String name;
 
     public OdfFiles(ZipFile zip) throws OdfException
     {
@@ -32,6 +33,7 @@ public class OdfFiles
                         Document doc = builder.parse(is);
                         is.close();
                         map.put(name, doc);
+                        this.name = name;
                     }
                 }
                 catch(Exception ex)
@@ -50,5 +52,10 @@ public class OdfFiles
     public Document get(String key)
     {
         return map.get(key);
+    }
+
+    public String name()
+    {
+        return this.name;
     }
 }
