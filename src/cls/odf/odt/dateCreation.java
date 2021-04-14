@@ -8,7 +8,7 @@ import java.io.*;
 
 public class dateCreation
 {
-	public dateCreation(Document document)
+	public dateCreation(Document document, String nom)
 	{
 		XPath xpath;
 		String DELIMITER = "/";
@@ -35,7 +35,7 @@ public class dateCreation
 					//System.out.println(nodes.item(i).getNodeValue()+DELIMITER);
 					try
 					{
-						file = new FileWriter("Content.csv");
+						file = new FileWriter(nom+"-DateCreation.csv");
 						//Ajouter l'en-tête
 						file.append(HEADER);
 						//Ajouter une nouvelle ligne après l'en-tête

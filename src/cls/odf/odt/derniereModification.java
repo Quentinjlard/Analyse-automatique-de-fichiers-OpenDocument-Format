@@ -8,7 +8,7 @@ import java.io.*;
 
 public class derniereModification
 {
-	public derniereModification(Document document)
+	public derniereModification(Document document, String nom)
 	{
 		XPath xpath;
 		String DELIMITER = "/";
@@ -35,7 +35,7 @@ public class derniereModification
 					//System.out.println(nodes.item(i).getNodeValue()+DELIMITER);
 					try
 					{
-						file = new FileWriter("Content.csv");
+						file = new FileWriter(nom+"-DerniereModication.csv");
 						//Ajouter l'en-tête
 						file.append(HEADER);
 						//Ajouter une nouvelle ligne après l'en-tête

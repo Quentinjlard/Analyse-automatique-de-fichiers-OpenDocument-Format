@@ -43,8 +43,9 @@ public class MenuODT
 					{
 						for(OdfFiles odf : vector)
 						{
-							System.out.println("Demarrage de l'analyse du META"); 
-							new metaodt(odf.get("meta.xml"));
+							System.out.println("Demarrage de l'analyse du META");
+							String nom = odf.name();
+							new metaodt(odf.get("meta.xml"), nom);
 							System.out.println();
 						}
 						break;
@@ -59,8 +60,9 @@ public class MenuODT
 						System.out.println("Demarrage de l'analyse du Content");
 						for(OdfFiles odf : vector)
 						{
-							System.out.println("Demarrage de l'analyse du META"); 
-							new contentodt(odf.get("content.xml"));
+							System.out.println("Demarrage de l'analyse du META");
+							String nom = odf.name(); 
+							new contentodt(odf.get("content.xml"), nom);
 							System.out.println();
 						}
 						break;
@@ -96,8 +98,9 @@ public class MenuODT
 					{
 						for(OdfFiles odf : vector)
 						{
-							System.out.println("Demarrage de l'analyse du META"); 
-							new auteur(odf.get("meta.xml"));
+							System.out.println("Demarrage de l'analyse du META");
+							String nom = odf.name(); 
+							new auteur(odf.get("meta.xml"), nom);
 							System.out.println();
 						}
 						break;
@@ -107,7 +110,8 @@ public class MenuODT
 						for(OdfFiles odf : vector)
 						{
 							System.out.println("Demarrage de l'analyse du META"); 
-							new dateCreation(odf.get("meta.xml"));
+							String nom = odf.name();
+							new dateCreation(odf.get("meta.xml"), nom);
 							System.out.println();
 						}
 						break;
@@ -117,7 +121,8 @@ public class MenuODT
 						for(OdfFiles odf : vector)
 						{
 							System.out.println("Demarrage de l'analyse du META"); 
-							new derniereModification(odf.get("meta.xml"));
+							String nom = odf.name();
+							new derniereModification(odf.get("meta.xml"), nom);
 							System.out.println();
 						}
 						break;
