@@ -43,7 +43,6 @@ public class styleG {
 						for(int j=0; j<nodes.getLength(); j++){
 							file.append(nodes.item(j).getNodeName() + DELIMITER + nodes.item(j).getTextContent());
 							file.append(SEPARATOR);
-							
 						}
 						file.close();
 					}
