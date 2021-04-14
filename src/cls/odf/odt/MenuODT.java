@@ -31,7 +31,7 @@ public class MenuODT
 					System.out.println("--Merci de choisir--");
 					System.out.println(" META 		: 	tapez 1");
 					System.out.println(" STYLES 	: 	tapez 2");
-					System.out.println(" Content	: 	tapez 2");
+					System.out.println(" Content	: 	tapez 3");
 					System.out.println(" Quitter 	: 	tapez 9");
 					choix = new Scanner(System.in).nextInt();
 					switch(choix)
@@ -49,8 +49,15 @@ public class MenuODT
 						}	
 						case 2 :
 						{
-							System.out.println("Demarrage de l'analyse du STYLES"); 
-							break;
+							System.out.println("Demarrage de l'analyse du STYLES");
+							for(OdfFiles odf : vector)
+							{
+								System.out.println("Demarrage de l'analyse du META");
+								String nom = odf.name(); 
+								new styleG(odf.get("style.xml"), nom);
+								System.out.println();
+							}
+							break; 
 						}
 						case 3 :
 						{
@@ -84,8 +91,8 @@ public class MenuODT
 					System.out.println("---Quel Fichier voulez-vous analysez? ---");
 					System.out.println("--Merci de choisir--");
 					System.out.println(" Auteur : tapez 1");
-					System.out.println(" Date de création : tapez 2");
-					System.out.println(" Date de derniére modification : tapez 3");
+					System.out.println(" Date de creation : tapez 2");
+					System.out.println(" Date de derniere modification : tapez 3");
 					System.out.println(" Nombre de page : tapez 4");
 					System.out.println(" Quitter : tapez 9");
 					choix = new Scanner(System.in).nextInt();
