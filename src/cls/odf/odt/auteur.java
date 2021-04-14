@@ -28,15 +28,15 @@ public class auteur
 				NodeList nodes = (NodeList)res;
 				FileWriter file = null;
 
-				String test = "meta:initial-creator";
-				String test1 = "meta:creator";
+				String possibilite1 = "meta:initial-creator";
+				String possibilite2 = "meta:creator";
 				
 				for(int i=0; i<nodes.getLength(); i++)
 				{
 
 					String expression = nodes.item(i).getNodeName();
 
-					if(test.equals(expression) || test1.equals(expression) ){
+					if(possibilite1.equals(expression) || possibilite2.equals(expression) ){
 						System.out.println(nodes.item(i).getNodeName() + DELIMITER + nodes.item(i).getTextContent() + DELIMITER);
 						//System.out.println(((Element)nodes.item(i)).getLocalName()+DELIMITER);
 						//System.out.println(nodes.item(i).getNodeValue()+DELIMITER);
