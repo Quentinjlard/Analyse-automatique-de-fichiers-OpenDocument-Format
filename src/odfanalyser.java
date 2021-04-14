@@ -124,11 +124,20 @@ public class odfanalyser
         // appel aux menus
         try
         {
+            if(hasVerbose)
+                System.out.print("verification du path, ");
             File f = new File(path);
             if(f.exists())
             {
+                if(hasVerbose)
+                    System.out.println("done.");
                 if(fileExtension != Extension.UNDEFINED && f.isDirectory())
                 {
+                    if(hasVerbose)
+                    {
+                        System.out.println("analyse dossier...");
+                        System.out.print("recuperation des fichiers " + fileExtension + ", ");
+                    }
                     // récupérer ts les fichiers dans des OdfFiles
                     String[] arr = f.list();
                     for(int i=0; i<arr.length; i++)
@@ -140,26 +149,36 @@ public class odfanalyser
                             vector.add(new OdfFiles(zip, fullPath));
                         }
                     }
+                    if(hasVerbose)
+                        System.out.println("done.");
                 }
                 else if(fileExtension == Extension.UNDEFINED && f.isFile())
                 {
+                    if(hasVerbose)
+                        System.out.print("recuperation du fichier, ");
                     if(path.endsWith(".odt"))
                     {
                         fileExtension = Extension.ODT;
                         zip = new ZipFile(path);
                         vector.add(new OdfFiles(zip, path));
+                        if(hasVerbose)
+                            System.out.println("done.\nformat du fichier : odt");
                     }
                     else if(path.endsWith(".odp"))
                     {
                         fileExtension = Extension.ODP;
                         zip = new ZipFile(path);
                         vector.add(new OdfFiles(zip, path));
+                        if (hasVerbose)
+                            System.out.println("done.\nformat du fichier : odp");
                     }
                     else if(path.endsWith(".ods"))
                     {
                         fileExtension = Extension.ODS;
                         zip = new ZipFile(path);
                         vector.add(new OdfFiles(zip, path));
+                        if (hasVerbose)
+                            System.out.println("done.\nformat du fichier : ods");
                     }
                     else
                     {
@@ -187,6 +206,8 @@ public class odfanalyser
             System.exit(0);
         }
 
+        if(hasVerbose)
+            System.out.println("analyse terminee\nexecution...\n");
         // si toutes les vérifications sont faites, valider l'execution
         goToMenu();
     }
@@ -200,8 +221,11 @@ public class odfanalyser
             verify();
         if(!isExtractable)
         {
-            System.out.println("\nNombre d'elements en cours d'analyse : " + vector.size());
-            System.out.println();
+            if(hasVerbose)
+            {
+                System.out.println("\nNombre d'elements en cours : " + vector.size());
+                System.out.println("Redirection vers le menu...\n");
+            }
             switch(fileExtension)
             {
                 case ODT :
@@ -300,7 +324,7 @@ public class odfanalyser
      */
     private static void verify()
     {
-        String str = "Description";
+        String str = "Description ligne de commande";
         str += "\n\tPath : " + path;
         str += "\n\tExtract Path : " + extractPath;
         str += "\n\tFile Extension : " + fileExtension;
