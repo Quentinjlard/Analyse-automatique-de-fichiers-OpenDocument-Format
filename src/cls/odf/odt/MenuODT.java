@@ -129,6 +129,13 @@ public class MenuODT
 					}
 					case 4 :
 					{
+						for(OdfFiles odf : vector)
+						{
+							System.out.println("Demarrage de l'analyse du META"); 
+							String nom = odf.name();
+							new styleG(odf.get("style.xml"), nom);
+							System.out.println();
+						}
 						break;
 					}
 					case 9 :
