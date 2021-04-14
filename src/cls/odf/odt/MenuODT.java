@@ -2,15 +2,12 @@ package cls.odf.odt;
 
 import cls.ext.OdfFiles ;
 import  java.util.Vector ;
-
 import java.util.Scanner;
 
 public class MenuODT
 {	
 	public MenuODT(Vector<OdfFiles> vector)
 	{
-		Scanner clavier = new Scanner(System.in);
-        
 		int sousmenu = 0;
 		boolean arret = false;
         
@@ -23,7 +20,7 @@ public class MenuODT
 			System.out.println(" Analyse poussé : tapez 1");
 			System.out.println(" Analyse simple : tapez 2");
 			System.out.println(" Quitter : tapez 9");
-			sousmenu = clavier.nextInt();
+			sousmenu = new Scanner(System.in).nextInt();
 
 			switch(sousmenu)
 			{
@@ -36,7 +33,7 @@ public class MenuODT
 					System.out.println(" STYLES 	: 	tapez 2");
 					System.out.println(" Content	: 	tapez 2");
 					System.out.println(" Quitter 	: 	tapez 9");
-					choix = clavier.nextInt();
+					choix = new Scanner(System.in).nextInt();
 					switch(choix)
 					{
 						case 1 :
@@ -91,7 +88,7 @@ public class MenuODT
 					System.out.println(" Date de derniére modification : tapez 3");
 					System.out.println(" Nombre de page : tapez 4");
 					System.out.println(" Quitter : tapez 9");
-					choix = clavier.nextInt();
+					choix = new Scanner(System.in).nextInt();
 					switch(choix)
 					{
 						case 1 :
