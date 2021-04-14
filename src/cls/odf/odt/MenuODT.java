@@ -16,8 +16,8 @@ public class MenuODT
 			System.out.println("-------------------ANALYSEUR DE ODT---------------------");
 			System.out.println("--------------------------------------------------------");
 
-			System.out.println("--Type d'analyse --");
-			System.out.println(" Analyse poussé : tapez 1");
+			System.out.println("---------------------Type d'analyse---------------------");
+			System.out.println(" Analyse complete : tapez 1");
 			System.out.println(" Analyse simple : tapez 2");
 			System.out.println(" Quitter : tapez 9");
 			sousmenu = new Scanner(System.in).nextInt();
@@ -90,11 +90,11 @@ public class MenuODT
 					int choix = 0;
 					System.out.println("---Quel Fichier voulez-vous analysez? ---");
 					System.out.println("--Merci de choisir--");
-					System.out.println(" Auteur : tapez 1");
-					System.out.println(" Date de creation : tapez 2");
-					System.out.println(" Date de derniere modification : tapez 3");
-					System.out.println(" Nombre de page : tapez 4");
-					System.out.println(" Quitter : tapez 9");
+					System.out.println(" Auteur 						: 	tapez 1");
+					System.out.println(" Date de creation 				: 	tapez 2");
+					System.out.println(" Date de derniere modification 	: 	tapez 3");
+					System.out.println(" Nombre de page 				: 	tapez 4");
+					System.out.println(" Quitter 						: 	tapez 9");
 					choix = new Scanner(System.in).nextInt();
 					switch(choix)
 					{
