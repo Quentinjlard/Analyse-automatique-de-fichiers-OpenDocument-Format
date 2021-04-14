@@ -9,10 +9,9 @@ public class MenuODT
 {	
 	public MenuODT(Vector<OdfFiles> vector)
 	{
-
 		Scanner clavier = new Scanner(System.in);
-        int sousmenu = 0;
-
+        
+		int sousmenu = 0;
 		boolean arret = false;
         
 		while (!arret){
