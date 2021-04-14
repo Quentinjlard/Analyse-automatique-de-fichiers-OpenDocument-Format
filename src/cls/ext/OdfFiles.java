@@ -10,14 +10,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 
 import java.io.File;
+import java.io.IOException;
 
 public class OdfFiles
 {
     private HashMap<String, Document> map;
     private String zipName;
+    private ZipFile zip;
 
     public OdfFiles(ZipFile zip, String path) throws OdfException
     {
+        this.zip = zip;
         map = new HashMap<String, Document>();
         List<FileHeader> headers;
         try
@@ -59,5 +62,38 @@ public class OdfFiles
     public String name()
     {
         return zipName;
+    }
+
+    public void extract(String destination) throws IOException
+    {
+        File dir;
+        if(destination == null)
+            destination = ".";
+        try
+        {
+            dir = new File(destination);
+            if(dir.exists() && dir.isDirectory())
+            {
+                dir = new File(destination + File.separator + name() + ".extraction");
+                if(!dir.mkdir())
+                {
+                    if(dir.exists() && dir.isDirectory())
+                    {
+                        System.err.println("\n\tLe fichier " + name() + " a deja ete extrait car " + dir.getPath() + " existe dans la destination.");
+                        return;
+                    }
+                    throw new Exception("Le repertoire de destination n'a pas pu etre cree correctement.");
+                }
+            }
+            else
+            {
+                throw new Exception("Le chemin d'acces au repertoire de destination est invalide.");
+            }
+        }
+        catch(Exception e)
+        {
+            throw new IOException(e.getMessage());
+        }
+        zip.extractAll(dir.getPath());
     }
 }

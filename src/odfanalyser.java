@@ -244,8 +244,21 @@ public class odfanalyser
         }
         else
         {
+            System.out.print("\nextraction, ");
             // utiliser les variables path et extractPath pour l'extraction 
-            System.err.println("L'extraction de fichiers n'est actuellement pas encore disponible...");
+            for(OdfFiles odf : vector)
+            {
+                try
+                {
+                    odf.extract(extractPath);
+                }
+                catch(java.io.IOException e)
+                {
+                    e.printStackTrace();
+                    System.exit(0);
+                }
+            }
+            System.out.println("done.\n");
         }
     }
 
@@ -300,8 +313,8 @@ public class odfanalyser
         doc += "\n-------------------------";
         doc += "\nDocumentation";
         doc += "\nOdfAnalyser est un logiciel de traitement de l'information\nen ligne de commande et menu textuel,\nsur les fichiers text, presentation et tableur\nde la suite ODF par OASIS.";
-        doc += "\n\nJAVA -JAR ODFANALYSER.JAR [FILE][OPTION]";
-        doc += "\n                          [-ARG [DIR]][OPTION]";
+        doc += "\n\nJAVA ODFANALYSER [FILE][OPTION]";
+        doc += "\n                 [-ARG [DIR]][OPTION]";
         doc += "\n\n>>> FILE";
         doc += "\nLe path vers le fichier odt, ods ou odp a analyser.";
         doc += "\n\n>>> ARG";
@@ -310,10 +323,10 @@ public class odfanalyser
         doc += "\n\t-p [DIR]\t\tIdem que l'argument -t mais pour les odp.";
         doc += "\n\t-s [DIR]\t\tIdem que les arguments -t et -p mais pour les ods.";
         doc += "\n\n>>> OPTION";
-        doc += "Autres actions possibles.";
+        doc += "\nAutres actions possibles.";
         doc += "\n\n\t-x [DIR]\t\tCette option force la decompression de l'archive odf.\n        \t\t\tSi elle est suivie d'un repertoire, le resultat de\n        \t\t\tla decompression aura lieu dans ce dossier specifie.";
-        doc += "\n\t-v [DIR]\t\tVerbose.";
-        doc += "\n\njava -jar odfanalyser.jar\tAffiche cette documentation.";
+        doc += "\n\t-v      \t\tVerbose.";
+        doc += "\n\njava odfanalyser\tAffiche cette documentation.";
         doc += "\n\n-------------------------";
         doc += "\n\nAuteurs : Corentin Machet, Corentin Antoine, Corentin Niarquin\n          Quentin Juilliard, Victor Lanotte, Florian Colson";
         System.out.println(doc);
