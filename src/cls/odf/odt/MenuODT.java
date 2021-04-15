@@ -54,7 +54,7 @@ public class MenuODT
 							{
 								System.out.println("Demarrage de l'analyse du META");
 								String nom = odf.name(); 
-								new styleG(odf.get("style.xml"), nom);
+								new styleG(odf.get("styles.xml"), nom);
 								System.out.println();
 							}
 							break; 
