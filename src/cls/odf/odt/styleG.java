@@ -33,6 +33,7 @@ public class styleG {
 				
 				for(int i=0; i<nodes.getLength(); i++)
 				{
+					file = new FileWriter(nom+"_"+i+"_"+"-auteur.csv");
 					String aVerifier = nodes.item(i).getNodeName();
 
 					if(expression1.equals(aVerifier) || expression2.equals(aVerifier)){
