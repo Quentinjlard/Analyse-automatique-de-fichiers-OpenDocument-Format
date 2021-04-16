@@ -3,31 +3,78 @@ package cls.odf.odt;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
+import javax.xml.xpath.XPathFactory;
+import javax.xml.xpath.XPath;
+import org.w3c.dom.*;
+
+import java.io.*;
 
 public class nbPage {
     
 
-    public nbPage(Document document){
+    public nbPage(Document document, String nom){
 
-        Document doc = document;
-        NodeList attributList = doc.getElementsByTagName("document-statistic");
-        attributList = doc.getElementsByTagName("page-count");
-        for (int  i = 0; i < attributList.getLength(); i++){
-            Node a = attributList.item(i);
-            if(a.getNodeType() == Node.ELEMENT_NODE){
-                Element attr = (Element) a;
-                String pagecount = attr.getAttribute("page-count");
-                NodeList pageList = attr.getChildNodes();
-                for(int j= 0; j<pageList.getLength();j++){
-                    Node attri = pageList.item(j);
-                    if(attri.getNodeType() == Node.ELEMENT_NODE){
-                        Element attribut = (Element) attri;
-                        System.out.println("Test" + pagecount + " : " + attribut.getTagName() + " = " + attribut.getTextContent() ); 
-                    }
-                }
-            }
-        }
-        
+        String DELIMITER = "/";
+    	String SEPARATOR = "\n";
+		String HEADER = "Balise/ Contenu";
+
+        try
+		{
+			xpath = XPathFactory.newInstance().newXPath();
+			String exp = "/document-content/meta/document-statisti";
+			if(document == null)
+				throw new Exception("Document cannot be null");
+			var res = xpath.compile(exp).evaluate(document, javax.xml.xpath.XPathConstants.NODESET);
+			System.out.println("\nResultats :");
+			System.out.println("------------------------");
+
+			if(res instanceof NodeList)
+			{
+				NodeList nodes = (NodeList)res;
+				for(int i=0; i<nodes.getLength(); i++)
+				{
+					System.out.print("\n" + nodes.item(i).getNodeName() + " : ");
+					if(nodes.item(i) instanceof Element)
+					{
+						System.out.println("#element");
+						var attributs = nodes.item(i).getAttributes();
+						if(attributs == null)
+						{
+							System.out.println("\tNe contient pas d'attributs...");
+						}
+						else
+						{
+                            file = new FileWriter(nom+"-content.csv");
+                            //Ajouter l'en-tête
+                            file.append(HEADER);
+                            //Ajouter une nouvelle ligne après l'en-tête
+                            file.append(SEPARATOR);
+							for(int j=0; j<attributs.getLength(); j++)
+							{
+								var attr = (Attr)(attributs.item(j));
+								System.out.println("\t" + attr.getName() + " = " + attr.getValue());
+                                file.append (attr.getName() + DELIMITER + attr.getValue());
+                                file.append(SEPARATOR);
+							}
+                            
+                            file.close();
+                            }
+					}
+					else
+					{
+						System.out.println("##");
+					}
+				}
+
+			}else{
+				System.out.println("L'extraction a echoue.");
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(0);
+		}        
     }
 }
 
