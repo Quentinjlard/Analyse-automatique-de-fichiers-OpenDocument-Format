@@ -72,7 +72,7 @@ public class stylepersonnaliser
 									System.out.println("\t\t" + attr1.getName() + " = " + attr1.getValue());
 
 									file.append(SEPARATOR);
-									file.append(DELIMITER+" "+DELIMITER+ attr1.getName() +" "+DELIMITER+" "+ attr1.getValue());
+									file.append(DELIMITER+" "+DELIMITER+" "+ attr1.getName() +" "+DELIMITER+" "+ attr1.getValue());
 								}
 
 								var elem = nodes.item(i).getChildNodes();
