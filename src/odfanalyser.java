@@ -17,13 +17,38 @@ import cls.net.lingala.zip4j.ZipFile;
  */
 public class odfanalyser
 {
+    /**
+     * Chemin vers le fichier ou dossier &agrave; analyser
+     */
     private static String path;
+    /**
+     * Chemin de destination du r&eacute;sultat de l'extraction
+     */
     private static String extractPath;
+    /**
+     * Extension du ou des fichier(s) &agrave; analyser
+     */
     private static Extension fileExtension = Extension.UNDEFINED;
+    /**
+     * True si l'analyse se porte sur un dossier. False sinon.
+     */
     private static boolean toDir = false;
+    /**
+     * True si l'utilisateur demande l'extraction des xml. False sinon.
+     */
     private static boolean isExtractable = false;
+    /**
+     * True si l'utilisateur demande le descriptif de l'execution. False sinon
+     */
     private static boolean hasVerbose = false;
+    /**
+     * Archive odf (odt, odp ou ods)
+     */
     private static ZipFile zip;
+    /**
+     * Structure contenant l'ensemble des informations des odf &agrave; analyser, convertis dans un format adapt&eacute;
+     * @see OdfFiles donn&eacute;es converties pour faciliter l'extraction d'informations
+     */
     private static Vector<OdfFiles> vector = new Vector<OdfFiles>();
 
     /**
@@ -213,7 +238,7 @@ public class odfanalyser
     }
 
     /**
-     * Fait l'appel au menu
+     * Routine : fait l'appel au menu
      */
     private static void goToMenu()
     {
@@ -263,8 +288,9 @@ public class odfanalyser
     }
 
     /**
-     * Gestion des des options verbose et extraction
+     * Routine : gestion des options verbose et extraction
      * @param opt liste des options pass&eacute;s en param&egrave;tre
+     * @throws OdfException
      */
     private static void options(String[] opt) throws OdfException
     {
@@ -305,7 +331,7 @@ public class odfanalyser
     }
 
     /**
-     * Affichage de la doc dans le terminal
+     * Routine : affiche la doc dans le terminal
      */
     private static void docs()
     {
@@ -333,7 +359,7 @@ public class odfanalyser
     }
 
     /**
-     * Affiche la description complète des attribut de la classe pour vérifier son bon fonctionnement
+     * Routine : affiche la description complète des attribut de la classe pour vérifier son bon fonctionnement
      */
     private static void verify()
     {

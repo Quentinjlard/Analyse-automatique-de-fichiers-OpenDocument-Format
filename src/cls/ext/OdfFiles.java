@@ -12,12 +12,32 @@ import org.w3c.dom.Document;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Format de donn&eacute;es sp&eacute;cifique, convertissant les informations du fichier odf en un objet java facilement utilisable
+ * @author Corentin Machet
+ * @version 1.0
+ */
 public class OdfFiles
 {
+    /**
+     * Map associant les objets Document, issus de la conversion des fichiers xml, &agrave; leur nom de fichier
+     */
     private HashMap<String, Document> map;
+    /**
+     * Nom de l'archive odf d'origine qui contenait les Document
+     */
     private String zipName;
+    /**
+     * Archive d'origine
+     */
     private ZipFile zip;
 
+    /**
+     * Constructeur 
+     * @param zip archive d'origine
+     * @param path chemin vers l'archive (pour r&eacute;cup&eacute;rer son nom)
+     * @throws OdfException
+     */
     public OdfFiles(ZipFile zip, String path) throws OdfException
     {
         this.zip = zip;
@@ -54,16 +74,28 @@ public class OdfFiles
         }
     }
 
+    /**
+     * @param key nom du fichier xml que l'on souhaite r&eacute;cup&eacute;rer
+     * @return le Document issu du fichier xml dont le nom est pass&eacute; en param&egrave;tre
+     */
     public Document get(String key)
     {
         return map.get(key);
     }
 
+    /**
+     * @return le nom de l'archive odf d'origine
+     */
     public String name()
     {
         return zipName;
     }
 
+    /**
+     * R&eacute;alise l'extraction compl&egrave;te de l'archive odf
+     * @param destination le chemin vers la destination du r&eacute;sultat de l'extraction
+     * @throws IOException
+     */
     public void extract(String destination) throws IOException
     {
         File dir;
