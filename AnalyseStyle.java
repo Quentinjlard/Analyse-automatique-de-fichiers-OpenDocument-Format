@@ -19,10 +19,11 @@ public class AnalyseStyle extends FichierBase {
    public void TypeDiapositive (){
        NodeList liste = Style.getElementsByTagName("style:presentation-page-layout");
        int taille = liste.getLength();
+       String styles;
        for (int i = 1; i<taille+1; i++) {
            Node current = liste.item(i);
            Element e = (Element)current;
-           String styles = e.getAttribute("style:display-name");
+           styles = e.getAttribute("style:display-name");
            System.out.println("la page"+i+"a pour style de diapo"+styles);}}
         
     public void Style (){
