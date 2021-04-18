@@ -30,8 +30,17 @@ public class auteur
 
 				String test = "meta:initial-creator";
 				String test1 = "meta:creator";
-				
-				for(int i=0; i<nodes.getLength(); i++)
+
+				if(test == null || test1 == null){
+					String chaine = "Le nom d'auteur n est pas renseigné";
+					file = new FileWriter(nom+"-auteur.csv");
+					file.append(HEADER);
+					file.append(SEPARATOR);
+					file.append(chaine);
+					file.close();
+					System.out.println(chaine);
+				}else{
+					for(int i=0; i<nodes.getLength(); i++)
 				{
 
 					String expression = nodes.item(i).getNodeName();
@@ -60,8 +69,19 @@ public class auteur
 						System.out.println(" NEXT "+nodes.item(i).getNodeName() + DELIMITER + nodes.item(i).getTextContent() + DELIMITER);
 					}
 				}
+				}
 			}else{
+				FileWriter file2 = null;
+				String chaine = "Le nom d'auteur n est pas renseigné";
+				file2 = new FileWriter(nom+"-auteur.csv");
+				file2.append(HEADER);
+				file2.append(SEPARATOR);
+				file2.append(chaine);
+				file2.close();
+				
 				System.out.println("L'extraction de NodeList a echoue.");
+				System.out.println( "OU");
+				System.out.println(chaine);
 			}
 		}
 		catch(Exception e)
