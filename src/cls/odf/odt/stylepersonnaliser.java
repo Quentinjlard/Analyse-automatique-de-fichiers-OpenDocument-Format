@@ -15,9 +15,10 @@ public class stylepersonnaliser
     	String SEPARATOR = "\n";
 		String HEADER = "Colonne 1 / Colonne 2 / Colonne 3 / Colonne 4";
 		FileWriter file;
+		
 
-		try
-		{
+		try{
+		
 			xpath = XPathFactory.newInstance().newXPath();
 			String exp = "/document-styles/styles/style";
 			if(document == null)
@@ -26,16 +27,22 @@ public class stylepersonnaliser
 			System.out.println("\nResultats :");
 			System.out.println("------------------------");
 
+			
+
 			if(res instanceof NodeList)
 			{
+				
 				NodeList nodes = (NodeList)res;
+
 				for(int i=0; i<nodes.getLength(); i++)
 				{
 					file = new FileWriter(nom+"_"+i+"_"+"-auteur.csv");
 
 					file.append(HEADER);
 					file.append(SEPARATOR);
+
 					file.append(nodes.item(i).getNodeName()+" : ");
+					file.append(SEPARATOR);
 
 					System.out.print("\n" + nodes.item(i).getNodeName() + " : ");
 					
@@ -44,7 +51,7 @@ public class stylepersonnaliser
 						System.out.println("#element");
 
 						file.append(SEPARATOR);
-						file.append( nodes.item(i).getNodeName()+DELIMITER+"#element");
+						file.append( nodes.item(i).getNodeName()+DELIMITER+" #element");
 						file.append(SEPARATOR);
 
 						var attributs = nodes.item(i).getAttributes();
@@ -105,12 +112,13 @@ public class stylepersonnaliser
 					{
 						System.out.println("##");
 					}
-					file.close();
+					
 				}
 
 			}else{
 				System.out.println("L'extraction a echoue.");
 			}
+			file.close();
 		}
 		catch(Exception e)
 		{
