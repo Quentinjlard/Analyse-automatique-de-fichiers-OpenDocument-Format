@@ -15,24 +15,25 @@ public class MenuODT
 			System.out.println("--------------------------------------------------------");
 			System.out.println("-------------------ANALYSEUR DE ODT---------------------");
 			System.out.println("--------------------------------------------------------");
-
 			System.out.println("---------------------Type d'analyse---------------------");
-			System.out.println(" Analyse complete : tapez 1");
-			System.out.println(" Analyse simple : tapez 2");
-			System.out.println(" Quitter : tapez 9");
+			System.out.println("--------------------------------------------------------");
+			System.out.println(" Tapez 1 : Analyse complete");
+			System.out.println(" Tapez 2 : Analyse simple");
+			System.out.println(" Tapez 9 : Quitter");
 			sousmenu = new Scanner(System.in).nextInt();
-
 			switch(sousmenu)
 			{
 				case 1 :
 				{
 					int choix = 0;
-					System.out.println("---Quel Fichier voulez-vous analysez? ---");
-					System.out.println("--Merci de choisir--");
-					System.out.println(" META 		: 	tapez 1");
+					System.out.println("--------------------------------------------------------");
+					System.out.println("-----------Quel Fichier voulez-vous analysez?-----------");
+					System.out.println("--------------------Merci de choisir--------------------");
+					System.out.println("--------------------------------------------------------");
+					System.out.println(" Tapez 1 : META");
 					//System.out.println(" STYLES 	: 	tapez 2");
-					System.out.println(" Content	: 	tapez 2");
-					System.out.println(" Quitter 	: 	tapez 9");
+					System.out.println(" Tapez 2 : Content");
+					System.out.println(" Tapez 9 : Quitter");
 					choix = new Scanner(System.in).nextInt();
 					switch(choix)
 					{
@@ -42,7 +43,8 @@ public class MenuODT
 							{
 								System.out.println("Demarrage de l'analyse du META");
 								String nom = odf.name();
-								new metaodt(odf.get("meta.xml"), nom);
+								String nomsans = nom.substring(0,nom.length() - 4); 
+								new metaodt(odf.get("meta.xml"), nomsans);
 								System.out.println();
 							}
 							break;
@@ -66,7 +68,8 @@ public class MenuODT
 							{
 								System.out.println("Demarrage de l'analyse du META");
 								String nom = odf.name(); 
-								new contentodt(odf.get("content.xml"), nom);
+								String nomsans = nom.substring(0,nom.length() - 4); 
+								new contentodt(odf.get("content.xml"), nomsans);
 								System.out.println();
 							}
 							break;
@@ -88,14 +91,16 @@ public class MenuODT
 				case 2 :
 				{
 					int choix = 0;
-					System.out.println("---Quel Fichier voulez-vous analysez? ---");
-					System.out.println("--Merci de choisir--");
-					System.out.println(" Auteur 						: 	tapez 1");
-					System.out.println(" Date de creation 				: 	tapez 2");
-					System.out.println(" Date de derniere modification 	: 	tapez 3");
-					System.out.println(" Des attirbut (page,etc ...)	: 	tapez 4");
-					System.out.println(" Style personalise				: 	tapez 5");
-					System.out.println(" Quitter 						: 	tapez 9");
+					System.out.println("--------------------------------------------------------");
+					System.out.println("----------Quel Fichier voulez-vous analysez?------------");
+					System.out.println("------------------ Merci de choisir --------------------");
+					System.out.println("--------------------------------------------------------");
+					System.out.println(" Tapez 1 : Auteur");
+					System.out.println(" Tapez 2 : Date de creation");
+					System.out.println(" Tapez 3 : Date de derniere modification");
+					System.out.println(" Tapez 4 : Des attirbut (page,etc ...)");
+					System.out.println(" Tapez 5 : Style personalise");
+					System.out.println(" Tapez 9 : Quitter");
 					choix = new Scanner(System.in).nextInt();
 					switch(choix)
 					{
@@ -104,8 +109,9 @@ public class MenuODT
 							for(OdfFiles odf : vector)
 							{
 								System.out.println("Recherche de l'auteur");
-								String nom = odf.name(); 
-								new auteur(odf.get("meta.xml"), nom);
+								String nom = odf.name();
+								String nomsans = nom.substring(0,nom.length() - 4); 
+								new auteur(odf.get("meta.xml"), nomsans);
 								System.out.println();
 							}
 							break;
@@ -116,7 +122,8 @@ public class MenuODT
 							{
 								System.out.println("Recherche de la date de création"); 
 								String nom = odf.name();
-								new dateCreation(odf.get("meta.xml"), nom);
+								String nomsans = nom.substring(0,nom.length() - 4); 
+								new dateCreation(odf.get("meta.xml"), nomsans);
 								System.out.println();
 							}
 							break;
@@ -127,7 +134,8 @@ public class MenuODT
 							{
 								System.out.println("Recherche de la date de derniere modification création"); 
 								String nom = odf.name();
-								new derniereModification(odf.get("meta.xml"), nom);
+								String nomsans = nom.substring(0,nom.length() - 4); 
+								new derniereModification(odf.get("meta.xml"), nomsans);
 								System.out.println();
 							}
 							break;
@@ -138,7 +146,8 @@ public class MenuODT
 							{
 								System.out.println("Recherche des attirbut (page,etc ...)"); 
 								String nom = odf.name();
-								new attributes(odf.get("meta.xml"), nom);
+								String nomsans = nom.substring(0,nom.length() - 4); 
+								new attributes(odf.get("meta.xml"), nomsans);
 								System.out.println();
 							}
 							break;
@@ -149,7 +158,8 @@ public class MenuODT
 							{
 								System.out.println("Demarrage du style personalise"); 
 								String nom = odf.name();
-								new stylepersonnaliser(odf.get("styles.xml"), nom);
+								String nomsans = nom.substring(0,nom.length() - 4); 
+								new stylepersonnaliser(odf.get("styles.xml"), nomsans);
 								System.out.println();
 							}
 							break;
