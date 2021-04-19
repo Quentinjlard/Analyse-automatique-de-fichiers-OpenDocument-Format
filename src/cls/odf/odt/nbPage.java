@@ -17,6 +17,8 @@ public class nbPage {
         String DELIMITER = "/";
     	String SEPARATOR = "\n";
 		String HEADER = "Balise/ Contenu";
+		XPath xpath;
+		FileWriter file;
 
         try
 		{

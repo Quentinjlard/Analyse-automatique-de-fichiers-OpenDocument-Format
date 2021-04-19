@@ -28,7 +28,7 @@ public class stylepersonnaliser
 
 			if(res instanceof NodeList)
 			{
-				file = new FileWriter(nom+"-auteur.csv");
+				file = new FileWriter(nom+"-stylePersonnaliser.csv");
 				file.append(HEADER);
 				file.append(SEPARATOR);
 
