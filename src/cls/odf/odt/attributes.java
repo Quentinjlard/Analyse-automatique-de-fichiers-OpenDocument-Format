@@ -9,21 +9,24 @@ import org.w3c.dom.*;
 
 import java.io.*;
 
-public class nbPage {
+public class attributes {
     
 
-    public nbPage(Document document, String nom){
+    public attributes(Document document, String nom){
 
-        String DELIMITER = "/";
-    	String SEPARATOR = "\n";
-		String HEADER = "Balise/ Contenu";
+        String odfFilePath = null;
+		DocumentBuilder documentBuilder;
 		XPath xpath;
 		FileWriter file;
+
+		String DELIMITER = "/";
+    	String SEPARATOR = "\n";
+		String HEADER = "Balise/ Contenu";
 
         try
 		{
 			xpath = XPathFactory.newInstance().newXPath();
-			String exp = "/document-content/meta/document-statisti";
+			String exp = "/document-meta/meta/document-statistic";
 			if(document == null)
 				throw new Exception("Document cannot be null");
 			var res = xpath.compile(exp).evaluate(document, javax.xml.xpath.XPathConstants.NODESET);
@@ -46,7 +49,7 @@ public class nbPage {
 						}
 						else
 						{
-                            file = new FileWriter(nom+"-content.csv");
+                            file = new FileWriter(nom+"-meta-attributs.csv");
                             //Ajouter l'en-tête
                             file.append(HEADER);
                             //Ajouter une nouvelle ligne après l'en-tête

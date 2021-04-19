@@ -1,4 +1,4 @@
-package src.cls.odf.odp;
+package cls.odf.odp;
 
 import cls.ext.OdfFiles;
 

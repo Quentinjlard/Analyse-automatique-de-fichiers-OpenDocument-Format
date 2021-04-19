@@ -16,8 +16,8 @@ public class MenuODT
 			System.out.println("-------------------ANALYSEUR DE ODT---------------------");
 			System.out.println("--------------------------------------------------------");
 
-			System.out.println("--Type d'analyse --");
-			System.out.println(" Analyse poussé : tapez 1");
+			System.out.println("---------------------Type d'analyse---------------------");
+			System.out.println(" Analyse complete : tapez 1");
 			System.out.println(" Analyse simple : tapez 2");
 			System.out.println(" Quitter : tapez 9");
 			sousmenu = new Scanner(System.in).nextInt();
@@ -30,7 +30,7 @@ public class MenuODT
 					System.out.println("---Quel Fichier voulez-vous analysez? ---");
 					System.out.println("--Merci de choisir--");
 					System.out.println(" META 		: 	tapez 1");
-					System.out.println(" STYLES 	: 	tapez 2");
+					//System.out.println(" STYLES 	: 	tapez 2");
 					System.out.println(" Content	: 	tapez 2");
 					System.out.println(" Quitter 	: 	tapez 9");
 					choix = new Scanner(System.in).nextInt();
@@ -47,12 +47,19 @@ public class MenuODT
 							}
 							break;
 						}	
-						case 2 :
+						/*case 2 :
 						{
-							System.out.println("Demarrage de l'analyse du STYLES"); 
-							break;
-						}
-						case 3 :
+							System.out.println("Demarrage de l'analyse du STYLES");
+							for(OdfFiles odf : vector)
+							{
+								System.out.println("Demarrage de l'analyse du META");
+								String nom = odf.name(); 
+								new styleG(odf.get("styles.xml"), nom);
+								System.out.println();
+							}
+							break; 
+						}*/
+						case 2 :
 						{
 							System.out.println("Demarrage de l'analyse du Content");
 							for(OdfFiles odf : vector)
@@ -83,11 +90,12 @@ public class MenuODT
 					int choix = 0;
 					System.out.println("---Quel Fichier voulez-vous analysez? ---");
 					System.out.println("--Merci de choisir--");
-					System.out.println(" Auteur : tapez 1");
-					System.out.println(" Date de création : tapez 2");
-					System.out.println(" Date de derniére modification : tapez 3");
-					System.out.println(" Nombre de page : tapez 4");
-					System.out.println(" Quitter : tapez 9");
+					System.out.println(" Auteur 						: 	tapez 1");
+					System.out.println(" Date de creation 				: 	tapez 2");
+					System.out.println(" Date de derniere modification 	: 	tapez 3");
+					System.out.println(" Des attirbut (page,etc ...)	: 	tapez 4");
+					System.out.println(" Style personalise				: 	tapez 5");
+					System.out.println(" Quitter 						: 	tapez 9");
 					choix = new Scanner(System.in).nextInt();
 					switch(choix)
 					{
@@ -95,7 +103,7 @@ public class MenuODT
 						{
 							for(OdfFiles odf : vector)
 							{
-								System.out.println("Demarrage de l'analyse du META");
+								System.out.println("Recherche de l'auteur");
 								String nom = odf.name(); 
 								new auteur(odf.get("meta.xml"), nom);
 								System.out.println();
@@ -106,7 +114,7 @@ public class MenuODT
 						{
 							for(OdfFiles odf : vector)
 							{
-								System.out.println("Demarrage de l'analyse du META"); 
+								System.out.println("Recherche de la date de création"); 
 								String nom = odf.name();
 								new dateCreation(odf.get("meta.xml"), nom);
 								System.out.println();
@@ -117,7 +125,7 @@ public class MenuODT
 						{
 							for(OdfFiles odf : vector)
 							{
-								System.out.println("Demarrage de l'analyse du META"); 
+								System.out.println("Recherche de la date de derniere modification création"); 
 								String nom = odf.name();
 								new derniereModification(odf.get("meta.xml"), nom);
 								System.out.println();
@@ -128,9 +136,20 @@ public class MenuODT
 						{
 							for(OdfFiles odf : vector)
 							{
-								System.out.println("Demarrage de l'analyse du META"); 
+								System.out.println("Recherche des attirbut (page,etc ...)"); 
 								String nom = odf.name();
-								new styleG(odf.get("style.xml"), nom);
+								new attributes(odf.get("meta.xml"), nom);
+								System.out.println();
+							}
+							break;
+						}
+						case 5 :
+						{
+							for(OdfFiles odf : vector)
+							{
+								System.out.println("Demarrage du style personalise"); 
+								String nom = odf.name();
+								new stylepersonnaliser(odf.get("styles.xml"), nom);
 								System.out.println();
 							}
 							break;

@@ -19,7 +19,7 @@ public class auteur
 		{
 			System.out.println("XPath generation d'expression...");
 			xpath = XPathFactory.newInstance().newXPath();
-			String exp = "/document-content/body/creator";
+			String exp = "/document-meta/meta/*";
 			var res = xpath.compile(exp).evaluate(document, javax.xml.xpath.XPathConstants.NODESET);
 			System.out.println("\nResultats :");
 			System.out.println("------------------------");
@@ -27,33 +27,61 @@ public class auteur
 			{
 				NodeList nodes = (NodeList)res;
 				FileWriter file = null;
-				
-				for(int i=0; i<nodes.getLength(); i++)
+
+				String test = "meta:initial-creator";
+				String test1 = "meta:creator";
+
+				if(test == null || test1 == null){
+					String chaine = "Le nom d'auteur n est pas renseigné";
+					file = new FileWriter(nom+"-auteur.csv");
+					file.append(HEADER);
+					file.append(SEPARATOR);
+					file.append(chaine);
+					file.close();
+					System.out.println(chaine);
+				}else{
+					for(int i=0; i<nodes.getLength(); i++)
 				{
-					System.out.println(nodes.item(i).getNodeName() + DELIMITER + nodes.item(i).getTextContent() + DELIMITER);
-					//System.out.println(((Element)nodes.item(i)).getLocalName()+DELIMITER);
-					//System.out.println(nodes.item(i).getNodeValue()+DELIMITER);
-					try
-					{
-						file = new FileWriter(nom+"-auteur.csv");
-						//Ajouter l'en-tête
-						file.append(HEADER);
-						//Ajouter une nouvelle ligne après l'en-tête
-						file.append(SEPARATOR);
-						for(int j=0; j<nodes.getLength(); j++){
-							file.append(nodes.item(j).getNodeName() + DELIMITER + nodes.item(j).getTextContent());
+
+					String expression = nodes.item(i).getNodeName();
+
+					if(test.equals(expression) || test1.equals(expression) ){
+						System.out.println(nodes.item(i).getNodeName() + DELIMITER + nodes.item(i).getTextContent() + DELIMITER);
+						//System.out.println(((Element)nodes.item(i)).getLocalName()+DELIMITER);
+						//System.out.println(nodes.item(i).getNodeValue()+DELIMITER);
+						try
+						{
+							file = new FileWriter(nom+"-auteur.csv");
+							//Ajouter l'en-tête
+							file.append(HEADER);
+							//Ajouter une nouvelle ligne après l'en-tête
 							file.append(SEPARATOR);
-							
+							file.append(nodes.item(i).getNodeName() + DELIMITER + nodes.item(i).getTextContent());
+							file.append(SEPARATOR);
+
+							file.close();
 						}
-						file.close();
-					}
-					catch(Exception e)
-					{
-						e.printStackTrace();
+						catch(Exception e)
+						{
+							e.printStackTrace();
+						}
+					}else{
+						System.out.println(" NEXT "+nodes.item(i).getNodeName() + DELIMITER + nodes.item(i).getTextContent() + DELIMITER);
 					}
 				}
+				}
 			}else{
+				FileWriter file2 = null;
+				String chaine = "Le nom d'auteur n est pas renseigné";
+				file2 = new FileWriter(nom+"-auteur.csv");
+				file2.append(HEADER);
+				file2.append(SEPARATOR);
+				file2.append(chaine);
+				file2.close();
+				
 				System.out.println("L'extraction de NodeList a echoue.");
+				System.out.println( "OU");
+				System.out.println(chaine);
 			}
 		}
 		catch(Exception e)

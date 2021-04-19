@@ -45,7 +45,7 @@ public class MenuODS{
         {
           for(OdfFiles odf : vector){
             String nom = odf.name();
-            new content.ods(odf.get("content.xml"));
+            new contentods(odf.get("content.xml"));
             System.out.println();
           }
           /*affichera le contenu général du tableur Soit en passannt par le content.xml / Soit en affichant le png du thumbtails*/
