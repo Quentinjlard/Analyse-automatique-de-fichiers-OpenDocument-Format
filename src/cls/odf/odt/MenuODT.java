@@ -43,8 +43,8 @@ public class MenuODT
 							{
 								System.out.println("Demarrage de l'analyse du META");
 								String nom = odf.name();
-								nom.substring(nom.length() - 3);
-								new metaodt(odf.get("meta.xml"), nom);
+								String nomsans = nom.substring(0,nom.length() - 4); 
+								new metaodt(odf.get("meta.xml"), nomsans);
 								System.out.println();
 							}
 							break;
@@ -68,8 +68,8 @@ public class MenuODT
 							{
 								System.out.println("Demarrage de l'analyse du META");
 								String nom = odf.name(); 
-								nom.substring(nom.length() - 3);
-								new contentodt(odf.get("content.xml"), nom);
+								String nomsans = nom.substring(0,nom.length() - 4); 
+								new contentodt(odf.get("content.xml"), nomsans);
 								System.out.println();
 							}
 							break;
@@ -110,7 +110,7 @@ public class MenuODT
 							{
 								System.out.println("Recherche de l'auteur");
 								String nom = odf.name();
-								String nomsans = nom.substring(nom.length() - 3); 
+								String nomsans = nom.substring(0,nom.length() - 4); 
 								new auteur(odf.get("meta.xml"), nomsans);
 								System.out.println();
 							}
@@ -122,7 +122,7 @@ public class MenuODT
 							{
 								System.out.println("Recherche de la date de création"); 
 								String nom = odf.name();
-								String nomsans = nom.substring(nom.length() - 3); 
+								String nomsans = nom.substring(0,nom.length() - 4); 
 								new dateCreation(odf.get("meta.xml"), nomsans);
 								System.out.println();
 							}
@@ -134,7 +134,7 @@ public class MenuODT
 							{
 								System.out.println("Recherche de la date de derniere modification création"); 
 								String nom = odf.name();
-								String nomsans = nom.substring(nom.length() - 3);
+								String nomsans = nom.substring(0,nom.length() - 4); 
 								new derniereModification(odf.get("meta.xml"), nomsans);
 								System.out.println();
 							}
@@ -146,7 +146,7 @@ public class MenuODT
 							{
 								System.out.println("Recherche des attirbut (page,etc ...)"); 
 								String nom = odf.name();
-								String nomsans = nom.substring(nom.length() - 3);
+								String nomsans = nom.substring(0,nom.length() - 4); 
 								new attributes(odf.get("meta.xml"), nomsans);
 								System.out.println();
 							}
@@ -158,7 +158,7 @@ public class MenuODT
 							{
 								System.out.println("Demarrage du style personalise"); 
 								String nom = odf.name();
-								String nomsans = nom.substring(nom.length() - 3);
+								String nomsans = nom.substring(0,nom.length() - 4); 
 								new stylepersonnaliser(odf.get("styles.xml"), nomsans);
 								System.out.println();
 							}
