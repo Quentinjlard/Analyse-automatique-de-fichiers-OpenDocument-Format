@@ -19,7 +19,7 @@ public class lastModif
 		{
 			System.out.println("XPath generation d'expression...");
 			xpath = XPathFactory.newInstance().newXPath();
-			String exp = "/document-meta/meta/*";
+			String exp = "/document-meta/meta/date";
 			var res = xpath.compile(exp).evaluate(document, javax.xml.xpath.XPathConstants.NODESET);
 			System.out.println("\nResultats :");
 			System.out.println("------------------------");
@@ -28,7 +28,7 @@ public class lastModif
 				NodeList nodes = (NodeList)res;
 				FileWriter file = null;
 
-				String expression = "meta:date";
+				String expression = "dc:date";
 
 				for(int i=0; i<nodes.getLength(); i++)
 				{

@@ -19,7 +19,7 @@ public class dateCreation
 		{
 			System.out.println("XPath generation d'expression...");
 			xpath = XPathFactory.newInstance().newXPath();
-			String exp = "/document-meta/meta/*";
+			String exp = "/document-meta/meta/creation-date";
 			var res = xpath.compile(exp).evaluate(document, javax.xml.xpath.XPathConstants.NODESET);
 			System.out.println("\nResultats :");
 			System.out.println("------------------------");
@@ -28,7 +28,7 @@ public class dateCreation
 				NodeList nodes = (NodeList)res;
 				FileWriter file = null;
 
-				String expression = "dc:date";
+				String expression = "meta:creation-date";
 
 				for(int i=0; i<nodes.getLength(); i++)
 				{

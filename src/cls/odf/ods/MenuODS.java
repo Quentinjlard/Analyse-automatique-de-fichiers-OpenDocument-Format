@@ -15,10 +15,10 @@ public class MenuODS{
   		int i = 0;
           int sousmenu = 0;
           boolean arret = false;
-  		System.out.println("----Début analyse ODS----");
-      System.out.println("Infos generales : tapez 1");
-      System.out.println("Contenu : tapez 2");
-      System.out.println("Quittez : tapez 9");
+  		System.out.println("----Debut analyse ODS----");
+      System.out.println("1| Infos generales");
+      System.out.println("2| Contenu");
+      System.out.println("9| Quittez");
       int choix = clavier.nextInt();
 
       switch(choix){
@@ -26,15 +26,16 @@ public class MenuODS{
         {
           for(OdfFiles odf : vector){
                 String nom = odf.name();
-								/*En commentaire car sur libreoffice je sais pas comment on ajoute un auteur
+								System.out.println("---Auteur---");
                 new auteur(odf.get("meta.xml"), nom);
 								System.out.println();
-                */
+                System.out.println("---Date-de-Creation---");
                 new dateCreation(odf.get("meta.xml"), nom);
                 System.out.println();
-                /**new lastModif(odf.get("meta.xml"), nom);
+                System.out.println("---Derniere-modification---");
+                new lastModif(odf.get("meta.xml"), nom);
                 System.out.println();
-                */
+                
           }
           /*affichera l'auteur, la date de création (dans le meta.xml), la dernière modification, nombre de page(style.xml)*/
           i++;
@@ -70,6 +71,6 @@ public class MenuODS{
 
         for (OdfFiles odf : vector){
             System.out.println(odf.get("content.xml").getNodeName());
-        } 
+        }
     }
 }

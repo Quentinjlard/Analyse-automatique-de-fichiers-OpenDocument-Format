@@ -19,7 +19,7 @@ public class auteur
 		{
 			System.out.println("XPath generation d'expression...");
 			xpath = XPathFactory.newInstance().newXPath();
-			String exp = "/document-meta/meta/*";
+			String exp = "/document-meta/meta/creator";
 			var res = xpath.compile(exp).evaluate(document, javax.xml.xpath.XPathConstants.NODESET);
 			System.out.println("\nResultats :");
 			System.out.println("------------------------");
@@ -29,7 +29,7 @@ public class auteur
 				FileWriter file = null;
 
 				String test = "meta:initial-creator";
-				String test1 = "meta:creator";
+				String test1 = "dc:creator";
 
 				for(int i=0; i<nodes.getLength(); i++)
 				{
