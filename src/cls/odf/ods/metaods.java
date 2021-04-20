@@ -7,7 +7,7 @@ import org.w3c.dom.*;
 import java.io.*;
 
 public class metaods{
-	public metaodt(Document document){
+	public metaods(Document document){
 
 		XPath xpath;
 
