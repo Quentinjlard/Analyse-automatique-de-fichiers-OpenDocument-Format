@@ -64,7 +64,7 @@ public class AnalyseManifest {
             Node current = liste.item(i);
             Element e = (Element)current;
             String attribut = e.getAttribute("manifest:media-type");
-            if (attribut.equals("image/png") || attribut.equals("image/jpg")){
+            if (attribut.equals("image/png") || attribut.equals("image/jpg") || attribut.equals("image/jpeg")){
                 retour++;
             }
         }
