@@ -21,7 +21,7 @@ public class AnalyseMeta extends FichierBase {
         for (int i = 0; i<taille; i++) {
             Node current = liste.item(i);
             Element e = (Element)current;
-            String generator = e.getElementsByTagName("meta:generator");}
+            String generator = e.getAttribut("meta:generator");}
         
         return generator;
             }
@@ -32,7 +32,7 @@ public class AnalyseMeta extends FichierBase {
         for (int i = 0; i<taille; i++) {
             Node current = liste.item(i);
             Element e = (Element)current;
-            String titre = e.getElementsByTagName("dc:title");}
+            String titre = e.getAttribut("dc:title");}
         
         return titre;
             }
@@ -44,7 +44,7 @@ public class AnalyseMeta extends FichierBase {
         for (int i = 0; i<taille; i++) {
             Node current = liste.item(i);
             Element e = (Element)current;
-            String auteurini = e.getElementsByTagName("meta:initial-creator");}
+            String auteurini = e.getAttribut("meta:initial-creator");}
         
         return auteurini;
             }
@@ -55,7 +55,7 @@ public class AnalyseMeta extends FichierBase {
         for (int i = 0; i<taille; i++) {
             Node current = liste.item(i);
             Element e = (Element)current;
-            String auteur = e.getElementsByTagName("dc:creator");}
+            String auteur = e.getAttribut("dc:creator");}
         
         return auteur;
             }
@@ -66,7 +66,7 @@ public class AnalyseMeta extends FichierBase {
         for (int i = 0; i<taille; i++) {
             Node current = liste.item(i);
             Element e = (Element)current;
-            String date = e.getElementsByTagName("meta:creation-date");}
+            String date = e.getAttribut("meta:creation-date");}
         
         return date;
             }
@@ -77,7 +77,7 @@ public class AnalyseMeta extends FichierBase {
         for (int i = 0; i<taille; i++) {
             Node current = liste.item(i);
             Element e = (Element)current;
-            String edit = e.getElementsByTagName("meta:editing-duration");}
+            String edit = e.getAttribut("meta:editing-duration");}
         
         return edit;
             }
