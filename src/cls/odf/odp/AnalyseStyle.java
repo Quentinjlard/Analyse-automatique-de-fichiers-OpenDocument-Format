@@ -27,7 +27,7 @@ public class AnalyseStyle {
             System.out.println("la page"+i+"a pour style de diapo"+styles);}}
 
     public void Style (){
-        System.out.println("le nombre de page est de "+NombrePages ());
+        System.out.println("le nombre de types de diapositive différentes dans ce masque est de "+ NombrePages ());
         TypeDiapositive ();
 
     }

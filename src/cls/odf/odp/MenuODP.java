@@ -60,7 +60,7 @@ public class MenuODP {
                             PrintWriter print = new PrintWriter(writer);
                             print.println("Titre," + metaAnalyser.Titre());
                             print.println("Date creation," + metaAnalyser.Date());
-                            print.println("NbSlides," + styleAnalyser.NombrePages());
+                            print.println("NbSlides," + contentAnalyser.NombreSlides());
                             print.println("NbImages," + manifestAnalyser.NombreImages());
                             print.println("TableauExiste,"+contentAnalyser.CheckExistence("table:table"));
                             print.println("NbPagesExiste,"+contentAnalyser.CheckExistence("text:page-number"));
