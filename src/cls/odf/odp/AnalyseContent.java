@@ -47,7 +47,7 @@ public class AnalyseContent {
         boolean NumeroPages = CheckExistence("text:page-number"); //Est-ce qu'il y a les numéros de pages affichés ?
         boolean Tableau = CheckExistence("table:table"); //Est-ce qu'il y a au moins un tableau ?
         boolean Animations = CheckExistence("anim:par"); //Est-ce qu'il y a au moins une animation ?
-        //int nbSlides = NombreSlides(); Réalisé de manière plus fiable par Victor avec Styles.xml
+        //int nbSlides = NombreSlides(); //Réalisé de manière plus fiable par Victor avec Styles.xml
         String retour =  "Il y a un tableau : " + Tableau + " Les numéros de slides sont affichés " + NumeroPages + " Il y a une animation : " + Animations;
         return retour;
     }

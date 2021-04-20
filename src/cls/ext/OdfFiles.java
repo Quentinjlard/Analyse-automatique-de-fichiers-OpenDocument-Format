@@ -96,6 +96,10 @@ public class OdfFiles
      * @param destination le chemin vers la destination du r&eacute;sultat de l'extraction
      * @throws IOException
      */
+
+    public ZipFile getZip(){
+        return this.zip;
+    }
     public void extract(String destination) throws IOException
     {
         File dir;

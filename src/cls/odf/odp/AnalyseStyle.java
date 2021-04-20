@@ -20,7 +20,7 @@ public class AnalyseStyle {
     public void TypeDiapositive (){
         NodeList liste = Style.getElementsByTagName("style:presentation-page-layout");
         int taille = liste.getLength();
-        for (int i = 1; i<taille+1; i++) {
+        for (int i = 1; i<taille; i++) {
             Node current = liste.item(i);
             Element e = (Element)current;
             String styles = e.getAttribute("style:display-name");
